@@ -7,12 +7,29 @@ interface PlayerPanelProps {
 const PlayerPanel: React.FC<PlayerPanelProps> = ({ winner }) => {
 	return (
 		<div className="text-gray-800 text-lg">
-			<p className={winner === 1 ? "opacity-100" : "opacity-70"}>
-				🞨 Player 1 {winner === 1 && "👑"}
-			</p>
-			<p className={winner === 2 ? "opacity-100" : "opacity-70"}>
-				🞅 Player 2 {winner === 2 && "👑"}
-			</p>
+			{winner !== 0 && (
+				<p
+					className={
+						winner === 1 && winner > 0
+							? "opacity-100"
+							: "opacity-50"
+					}
+				>
+					🞨 Player 1 {winner === 1 && winner > 0 && "👑"}
+				</p>
+			)}
+			{winner !== 0 && (
+				<p
+					className={
+						winner === 2 && winner > 0
+							? "opacity-100"
+							: "opacity-50"
+					}
+				>
+					🞅 Player 2 {winner === 2 && winner > 0 && "👑"}
+				</p>
+			)}
+			{winner === 0 && <p>🤝 Draw</p>}
 		</div>
 	);
 };
